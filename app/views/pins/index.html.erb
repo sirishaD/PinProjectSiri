@@ -5,6 +5,12 @@
         <h2>
           <%= link_to pin.title, pin %>
         </h2>
+        <p>
+          <%= pin.get_likes.size %> Likes <%= pin.get_dislikes.size %> Dislikes
+        </p>
+        <p>
+          <%= pin.comments.count %> Comments
+        </p>
         <p class="user">
           User's email:
           <%= pin.user.email %>

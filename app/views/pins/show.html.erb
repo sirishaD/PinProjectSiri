@@ -11,6 +11,20 @@
         <p class="description">
           <%= @pin.description %>
         </p>
+        <div id="comments">
+          <h3 class="comment_count">
+            <%= pluralize(@pin.comments.count, "Comment") %>
+          </h3>
+          <% @comments.each do |comment| %>
+              <div class="comment">
+
+                <p class="comment">
+                  <%= comment.comment %>
+                </p>
+              </div>
+          <% end %>
+          <%= render "comments/form" %>
+        </div>
       </div>
       <div class="panel-footer">
         <div class="row">
@@ -22,14 +36,21 @@
           </div>
           <div class="col-md-6">
             <div class="btn-group pull-right">
-              <%= link_to like_pin_path(@pin), method: :put, class: "btn btn-default" do %>
-                  <span class="glyphicon glyphicon-heart"></span>
+              <%= link_to like_pin_path(@pin), method: :get, class: "btn btn-default" do %>
+                  <span class="glyphicon glyphicon-thumbs-up"></span>
                   <%= @pin.get_upvotes.size %>
               <% end %>
+              <div class="btn-group pull-right">
+                <%= link_to dislike_pin_path(@pin), method: :get, class: "btn btn-default" do %>
+                    <span class="glyphicon glyphicon-thumbs-down"></span>
+                    <%= @pin.get_downvotes.size %>
+                <% end %>
+
               <% if user_signed_in? %>
                   <%= link_to "Edit", edit_pin_path, class: "btn btn-default" %>
                   <%= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %>
               <% end %>
+              </div>
             </div>
           </div>
         </div>

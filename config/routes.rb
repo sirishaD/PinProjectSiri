@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :pins do
     member do
-      put "like", to: "pins#upvote"
+      get "like", to: "pins#upvote"
+      get "dislike", to: "pins#downvote"
     end
+    resources :comments
   end
 
   root"pins#index"
