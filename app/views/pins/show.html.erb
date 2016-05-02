@@ -17,8 +17,9 @@
           </h3>
           <% @comments.each do |comment| %>
               <div class="comment">
-
+                <p style="color:#2372B2">Comment by: <%= comment.user.email %> </p>
                 <p class="comment">
+
                   <%= comment.comment %>
                 </p>
               </div>
