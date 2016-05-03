@@ -13,4 +13,28 @@ class CommentsController < ApplicationController
       render 'new'
     end
   end
+
+  def destroy
+    @pin = Pin.find(params[:pin_id])
+    @comment = @pin.comments.find(params[:id])
+    @comment.destroy
+    redirect_to pin_path(@pin)
+  end
+
+  def edit
+    @pin = Pin.find(params[:pin_id])
+    @comment = @pin.comments.find(params[:id])
+
+  end
+
+  def update
+    @pin = Pin.find(params[:pin_id])
+    @comment = @pin.comments.find(params[:id])
+
+    if @comment.update(params[:comment].permit(:comment))
+      redirect_to pin_path(@pin)
+    else
+      render 'edit'
+    end
+  end
 end

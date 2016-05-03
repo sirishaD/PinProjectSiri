@@ -49,6 +49,11 @@ class PinsController < ApplicationController
     @pin.downvote_by current_user
     redirect_to :back
   end
+
+  def account
+
+  end
+
   private
   def pin_params
     params.require(:pin).permit(:title, :description, :image)

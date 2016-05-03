@@ -17,11 +17,13 @@
           </h3>
           <% @comments.each do |comment| %>
               <div class="comment">
-                <p style="color:#2372B2">Comment by: <%= comment.user.email %> </p>
+                <p style="color:#2372B2">Comment by:
+                  <%= comment.user.email if comment.user %> </p>
                 <p class="comment">
-
                   <%= comment.comment %>
                 </p>
+                <%= link_to "Edit Comment", edit_pin_comment_path(comment.pin, comment), class: "btn btn-default" %>
+                <%= link_to "Delete Comment", [comment.pin, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %>
               </div>
           <% end %>
           <%= render "comments/form" %>
