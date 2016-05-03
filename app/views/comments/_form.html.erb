@@ -1,4 +1,4 @@
-<%= simple_form_for([@pin, @pin.comments.build]) do |f| %>
+<%= simple_form_for([@pin, @pin.comments.build], remote: true) do |f| %>
     <%= f.input :comment, lable: "Reply to thread" %>
     <%= f.button :submit, lable: "Add new comment", class: "btn btn-primary"%>
 <% end %>

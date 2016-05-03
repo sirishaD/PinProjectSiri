@@ -11,23 +11,28 @@
         <p class="description">
           <%= @pin.description %>
         </p>
+
         <div id="comments">
           <h3 class="comment_count">
             <%= pluralize(@pin.comments.count, "Comment") %>
           </h3>
           <% @comments.each do |comment| %>
-              <div class="comment">
+              <div class="comment_author">
                 <p style="color:#2372B2">Comment by:
                   <%= comment.user.email if comment.user %> </p>
-                <p class="comment">
+                <div class="btn-group pull-right">
+                  <%= link_to "Edit",edit_pin_comment_path(comment.pin, comment), class: "btn btn-default" %>
+                  <%= link_to "Delete", [comment.pin, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %>
+                </div>
+                <p class="comment_content">
                   <%= comment.comment %>
                 </p>
-                <%= link_to "Edit Comment", edit_pin_comment_path(comment.pin, comment), class: "btn btn-default" %>
-                <%= link_to "Delete Comment", [comment.pin, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %>
               </div>
           <% end %>
           <%= render "comments/form" %>
         </div>
+
+
       </div>
       <div class="panel-footer">
         <div class="row">

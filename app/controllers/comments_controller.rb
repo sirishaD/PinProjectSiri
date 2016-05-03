@@ -7,6 +7,12 @@ class CommentsController < ApplicationController
     @comment = Comment.create(params[:comment].permit(:comment))
     @comment.user_id = current_user.id
     @comment.pin_id = @pin.id
+
+    respont_to do |format|
+      format.html {redirect_to pin_path(@pin)}
+      format.js
+    end
+
     if @comment.save
       redirect_to pin_path(@pin)
     else
