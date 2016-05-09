@@ -13,23 +13,20 @@
         </p>
 
         <div id="comments">
-          <h3 class="comment_count">
-            <%= pluralize(@pin.comments.count, "Comment") %>
-          </h3>
+          <%= render "comments/form" %>
           <% @comments.each do |comment| %>
-              <div class="comment_author">
+              <div class="delete_comment">
                 <p style="color:#2372B2">Comment by:
                   <%= comment.user.email if comment.user %> </p>
                 <div class="btn-group pull-right">
                   <%= link_to "Edit",edit_pin_comment_path(comment.pin, comment), class: "btn btn-default" %>
-                  <%= link_to "Delete", [comment.pin, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %>
+                  <%= link_to "Delete", [comment.pin, comment], method: :delete, data: { confirm: "Are you sure?" }, :remote => true, class: "btn btn-default" %>
                 </div>
                 <p class="comment_content">
                   <%= comment.comment %>
                 </p>
               </div>
           <% end %>
-          <%= render "comments/form" %>
         </div>
 
 

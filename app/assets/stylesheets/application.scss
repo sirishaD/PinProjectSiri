@@ -127,11 +127,15 @@ textarea {
       margin: 0;
       padding: 0;
     }
-    .comment_author {
-      color: #397CAC;
-      margin-top: .5rem;
-      font-size: 0.6em;
-      font-weight: 700;
+    .delete_comment {
+      background-color: #4CAF50; /* Green */
+      border: 2px solid #4CAF50;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
     }
   }
   input[type="submit"] {

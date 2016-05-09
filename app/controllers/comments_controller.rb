@@ -8,24 +8,27 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.pin_id = @pin.id
 
-    respont_to do |format|
-      format.html {redirect_to pin_path(@pin)}
-      format.js
+
+      if @comment.save
+        redirect_to pin_path(@pin)
+
+      else
+         render 'new'
+
+      end
     end
 
-    if @comment.save
-      redirect_to pin_path(@pin)
-    else
-      render 'new'
-    end
-  end
 
   def destroy
     @pin = Pin.find(params[:pin_id])
     @comment = @pin.comments.find(params[:id])
     @comment.destroy
-    redirect_to pin_path(@pin)
+    respond_to do |format|
+        format.html {redirect_to pin_path(@pin)}
+        format.js { render :layout => false }
+    end
   end
+
 
   def edit
     @pin = Pin.find(params[:pin_id])
