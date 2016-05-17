@@ -32,6 +32,7 @@ gem 'aws', '~> 2.10', '>= 2.10.2'
 
 gem 'masonry-rails', '~> 0.2.4'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'social-share-button', '~> 0.1.6'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
