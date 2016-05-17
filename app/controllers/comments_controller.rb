@@ -10,12 +10,9 @@ class CommentsController < ApplicationController
 
 
       if @comment.save
-
         redirect_to pin_path(@pin)
-
       else
          render 'new'
-
       end
     end
 
