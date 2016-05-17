@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 
 
       if @comment.save
-        CommentMailer.new_comment(@comment).deliver_now
+
         redirect_to pin_path(@pin)
 
       else
