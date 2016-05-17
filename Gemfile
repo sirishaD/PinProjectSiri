@@ -26,7 +26,10 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
+
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
+gem 'aws', '~> 2.10', '>= 2.10.2'
+
 gem 'masonry-rails', '~> 0.2.4'
 gem 'acts_as_votable', '~> 0.10.0'
 
