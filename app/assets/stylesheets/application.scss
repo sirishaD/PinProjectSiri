@@ -12,10 +12,12 @@
  *
  *= require 'masonry/transitions'
  *= require_tree .
+ *= require social-share-button
  *= require_self
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "social-share-button";
 body {
   background: #E9E9E9;
 }
